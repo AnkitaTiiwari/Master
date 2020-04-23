@@ -4,3 +4,11 @@ https://hinchley.net/articles/encrypt-and-decrypt-a-password-using-powershell/
 
 #Copies the outputthe clipboard
  $Password | clip
+
+#replace multiple string in one GO
+(Get-Content $file.FullName) | ForEach-Object { 
+                                  $_ -replace 'IDR_CTL', '${ctl}' `
+                                       -replace 'IDR_DWH', '${dwh}' `
+                                       -replace 'IDR_STG', '${stg}' `
+                                       -replace 'IDR_ODS', '${ods}' 
+                                     } | out-File $file.FullName
