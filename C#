@@ -1,0 +1,57 @@
+//var shell = PowerShell.Create();
+
+                    //shell.Commands.AddScript(@"\\MMSWT13\RIADLoad\RIAD_Updates.ps1 -LoadType 'U' -Initiated 'M' -User 'Chandra'");
+                    //RIAD Client - Not working
+
+                    //  shell.Commands.AddScript(@"\\tsclient\J\MMSR\RND\test.ps1 -OutputFileName 'CustomFileName' -Text 'Custome Text'");
+                    //shell.Invoke();
+
+                    /* string path = @"\\MMSWT13\RIADLoad\MyTest.txt";
+                    // Create the file, or overwrite if the file exists.
+                     using (FileStream fs = File.Create(path))
+                     {
+                         byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
+                         // Add some information to the file.
+                         fs.Write(info, 0, info.Length);
+                     }*/ //working
+
+                    //var shell = PowerShell.Create();
+                    //shell.AddScript(@"\\MMSWT13\RIADLoad\RIAD_Updates.ps1 -Initiated 'M' -User 'Ankita'");
+                    //\\Mmswt13\riad_daily_load\RIAD_Updates.ps1 -LoadType 'U' -Initiated 'M' -User 'Ankita'
+                    //shell.Invoke();
+
+                    //var shell = PowerShell.Create();
+                    //shell.Commands.AddScript(@"\\MMSWT13\RIADLoad\RIAD_Updates.ps1 -Initiated 'M' -User 'Chandra'");
+                    //shell.Invoke();
+
+
+                    //IDictionary parameters = new Dictionary<String, String>();
+                    //parameters.Add("OutputFileName", "CustomFileName1234");
+                    //parameters.Add("Text", "Ankita Tiwar");
+
+                    //PowerShell.Create().AddScript(@"\\tsclient\J\MMSR\RND\test.ps1")
+                    //   .AddParameters(parameters)
+                    //      .Invoke();
+
+
+                    string Initiated = "M";
+                    string User = "Ankita";
+
+
+                    PowerShell powerShell = PowerShell.Create();
+                    RunspaceConfiguration runspaceConfiguration = RunspaceConfiguration.Create();
+                    powerShell.Runspace = RunspaceFactory.CreateRunspace(runspaceConfiguration);
+                    powerShell.Runspace.Open();
+                    powerShell.AddCommand(@"\\Mmswt13\riad_daily_load\RIAD_Updates.ps1", false);
+
+                    powerShell.AddParameter("Initiated", Initiated);
+                    powerShell.AddParameter("User", User);
+
+
+                    Collection<PSObject> results = powerShell.Invoke();
+                    StringBuilder stringBuilder = new StringBuilder();
+                    foreach (PSObject obj in results)
+                    {
+                        stringBuilder.AppendLine(obj.ToString());
+                    }
+                    string result = stringBuilder.ToString();
