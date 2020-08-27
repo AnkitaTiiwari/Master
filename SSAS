@@ -1,0 +1,14 @@
+//Check the SSAS Database status
+
+<Discover xmlns="urn:schemas-microsoft-com:xml-analysis">
+	<RequestType>DISCOVER_XML_METADATA</RequestType>
+	<Restrictions>
+		<RestrictionList>
+			<DatabaseID>TMMSR</DatabaseID>
+		</RestrictionList>
+	</Restrictions>
+	<Properties>
+		<PropertyList>
+		</PropertyList>
+	</Properties>
+</Discover>
