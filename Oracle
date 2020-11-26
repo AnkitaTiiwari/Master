@@ -1,2 +1,5 @@
 --fetch first 100 records
 FETCH FIRST 100 ROWS ONLY
+
+--refresh MV
+EXECUTE DBMS_MVIEW.REFRESH('emp_dept_sum','F');
