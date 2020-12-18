@@ -19,3 +19,9 @@ SELECT DS.TABLESPACE_NAME, SEGMENT_NAME, ROUND(SUM(DS.BYTES) / (1024 * 1024)) AS
   WHERE SEGMENT_NAME IN (SELECT TABLE_NAME FROM DBA_TABLES where table_name ='CSDB_INSTR_SRC' )
  GROUP BY DS.TABLESPACE_NAME,
        SEGMENT_NAME;
+
+---Check locked object
+elect * from gv$locked_object where object_id='149230';
+1:17
+select * from gv$locked_object where object_id='139577';
+select * from dba_objects where object_name='CSDB_INSTR_SRC';
