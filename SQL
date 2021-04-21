@@ -9,3 +9,15 @@ WHERE TYPE = 'VIEW'
     AND referenced_type = 'TABLE'   
     and referenced_name like '%Table Name%'
     and referenced_type = 'TABLE'
+
+-------------Get all the columns from a table 
+SELECT COLUMN_NAME
+
+FROM INFORMATION_SCHEMA.COLUMNS
+
+WHERE TABLE_NAME = 'Employees'
+
+ORDER BY ORDINAL_POSITION
+
+-------------same 
+EXEC sp_columns 'Employees'
