@@ -25,3 +25,6 @@ elect * from gv$locked_object where object_id='149230';
 1:17
 select * from gv$locked_object where object_id='139577';
 select * from dba_objects where object_name='CSDB_INSTR_SRC';
+
+------------gets all constraints
+SELECT * FROM ALL_CONSTRAINTS WHERE CONSTRAINT_NAME LIKE '%BATCH_OP_PROP_FK%';
