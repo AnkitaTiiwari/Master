@@ -12,3 +12,11 @@
 		</PropertyList>
 	</Properties>
 </Discover>
+
+---------Kill a session
+SELECT * FROM $SYSTEM.DISCOVER_SESSIONS WHERE [SESSION_STATUS] = 1
+
+<Cancel xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <SPID>18966</SPID>
+  <CancelAssociated>1</CancelAssociated>
+</Cancel>
